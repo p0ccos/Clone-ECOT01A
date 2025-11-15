@@ -1,0 +1,35 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    
+    // --- Nossas Correções ---
+    
+    // 1. Corrige: "Não é possível usar JSX..."
+    "jsx": "react-native",
+
+    // 2. Corrige: "só pode ser importado por padrão usando o sinalizador 'esModuleInterop'"
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    // 3. Boa prática: Não checar tipos das bibliotecas (node_modules)
+    "skipLibCheck": true,
+
+    // --- BÔNUS: Imports Absolutos ---
+    // Permite fazer 'import Component from '@/components/Button'
+    // ao invés de '../../../components/Button'
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  // Informa ao TypeScript quais arquivos incluir
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "App.tsx"
+, "src/components/style.js"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
